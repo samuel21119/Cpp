@@ -9,7 +9,7 @@
 #include <algorithm>
 using namespace std;
 int house[100005];
-int ap, n, _max;
+int ap, n, mx;
 bool check(int mid) {
     int count = 0;
     int i, j;
@@ -38,7 +38,7 @@ int main() {
             continue;
         }
         sort(house, house + n);
-        _max = house[n - 1];
+        mx = house[n - 1];
         int down, up;
         int mid;
         down = 0;
