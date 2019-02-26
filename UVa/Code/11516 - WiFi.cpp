@@ -9,20 +9,20 @@
 #include <algorithm>
 using namespace std;
 int house[100005];
-int ap, _house, _max;
-bool Depend(int mid) {
+int ap, n, _max;
+bool check(int mid) {
     int count = 0;
     int i, j;
     int mid2 = mid * 2;
     i = j = 0;
     while (1) {
-        while (house[j] <= house[i] + mid2 && j < _house)
+        while (house[j] <= house[i] + mid2 && j < n)
             j++;
         count++;
         i = j;
         if (count > ap)
             return false;
-        if (j >= _house)
+        if (j >= n)
             return true;
     }
 }
@@ -30,22 +30,22 @@ int main() {
     int count;
     scanf("%d", &count);
     while (count--) {
-        scanf("%d%d", &ap, &_house);
-        for (int i = 0; i < _house; i++)
+        scanf("%d%d", &ap, &n);
+        for (int i = 0; i < n; i++)
             scanf("%d", house + i), house[i] *= 2;
-        if (ap >= _house) {
+        if (ap >= n) {
             printf("0.0\n");
             continue;
         }
-        sort(house, house + _house);
-        _max = house[_house - 1];
+        sort(house, house + n);
+        _max = house[n - 1];
         int down, up;
         int mid;
         down = 0;
-        up = house[_house - 1];
+        up = house[n - 1];
         while (up - down > 1) {
             mid = (down + up)/2;
-            if (Depend(mid))
+            if (check(mid))
                 up = mid;
             else
                 down = mid;
