@@ -4,7 +4,7 @@
   > Mail: enminghuang21119@gmail.com
   > Created Time: Tue Feb 11 14:33:45 2020
 *************************************************************************/
-
+     
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -32,7 +32,6 @@ int main() {
     for (int i = 0; i < n / 2; i++) {
         if (in[i].x - in[i + 1].x != -in[i + n / 2].x + in[i + n / 2 + 1].x || in[i].y - in[i + 1].y != -in[i + n / 2].y + in[i + n / 2 + 1].y) {
             cout << "NO\n";
-            cout << i << '\n';
             return 0;
         }
     }
