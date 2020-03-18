@@ -69,20 +69,24 @@ void dfs(int ind, int sum, int state, int i) {
         dfs(ind + 1, sum, state << 1, i);
     }
 }
-map<int, vector<int>> mx;
+vector<int> mx[20000];
 inline void pre_calc() {
     sort(vaild_state, vaild_state + cnt);
+    int t = 0;
     for (int i : s) {
         for (int j = 0; j < cnt; j++)
             if ((vaild_state[j] & i) == vaild_state[j]) {
-                mx[i].emplace_back(vaild_state[j]);
+                mx[t].emplace_back(vaild_state[j]);
             };
+        t++;
     }
 }
 inline void get_mx(int x) {
+    int t = 0;
     for (int i : s) {
-        for (int j : mx[i])
+        for (int j : mx[t])
             dp[x][j] = max(dp[x][j], dp[x][i]);
+        t++;
     }
 }
 int main() {
